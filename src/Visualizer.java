@@ -1,6 +1,6 @@
 
 public class Visualizer {
 
-	//Hey Cam, Myon, Nathana
+	//Hey Cam, Myon, Nathan
 	
 }
