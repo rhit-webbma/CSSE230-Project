@@ -19,7 +19,7 @@ public class Graph<T> {
 			name = restaurant;
 		}
 		
-		public void addEdge(T e, int time, int distance) {
+		public void addEdge(T e, int time, double distance) {
 			Node otherNode = nodes.get(e);
 			neighbors.add(new Edge(otherNode, time, distance));
 		}
@@ -29,9 +29,9 @@ public class Graph<T> {
 	private class Edge {
 		private Node otherNode;
 		private int time;
-		private int distance;
+		private double distance;
 		
-		public Edge(Node n, int t, int d){
+		public Edge(Node n, int t, double d){
 			otherNode = n;
 			time = t;
 			distance = d;
@@ -43,7 +43,7 @@ public class Graph<T> {
 		return true;
 	}
 	
-	public boolean addEdge(T e1, T e2, int time, int distance) {
+	public boolean addEdge(T e1, T e2, int time, double distance) {
 		if (!nodes.containsKey(e1) && !nodes.containsKey(e2)) return false;
 		nodes.get(e1).addEdge(e2, time, distance);
 	    return true;
