@@ -163,6 +163,13 @@ public class Graph<T> {
 	}
 
 	public double getMinDist(Node n1, Node n2) {
+//		ArrayList<Edge> edges = new ArrayList<Edge>();
+//		n1.shortestDistArray(n2, 0, 0, edges);
+//		double dist = 0;
+//		for(int i = 0; i < edges.size(); i++) {
+//			dist += edges.get(1).distance;
+//		}
+//		return dist;
 		return n1.shortestDist(n2, 0, 0);
 	}
 	
