@@ -111,6 +111,13 @@ public class GraphStuff {
 		g.addEdge(31, 15, 7, 2.75);
 		g.addEdge(32, 34, 3, 0.45);
 		g.addEdge(38, 5, 2, 0.09);
+		
+		System.out.println(g.getMinDist(g.nodes.get(11), g.nodes.get(24)));
+		System.out.println(g.getMinTime(g.nodes.get(11), g.nodes.get(24)));
+		System.out.println(g.DistArray(g.nodes.get(11), g.nodes.get(24)));
+		System.out.println(g.TimeArray(g.nodes.get(11), g.nodes.get(24)));
 	}
+	
+	
 
 }
