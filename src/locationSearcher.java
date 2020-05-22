@@ -25,6 +25,7 @@ public class locationSearcher extends JPanel{
 	
 	public locationSearcher(restaurantInfo info)
 	{
+		//Pull
 		setLayout(null);
 		
 		graphStuff = new GraphStuff();

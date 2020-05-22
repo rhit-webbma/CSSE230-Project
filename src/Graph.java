@@ -11,6 +11,8 @@ public class Graph<T> {
 	
 	public int getIndex(String restaurantName)
 	{
+		
+		//Push
 		int index = 0;
 		
 		for(int i = 1; i < nodes.size(); i++)
