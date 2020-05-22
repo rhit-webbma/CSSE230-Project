@@ -13,14 +13,14 @@ public class Graph<T> {
 	{
 		int index = 0;
 		
-		for(int i = 0; i < nodes.size(); i++)
+		for(int i = 1; i < nodes.size(); i++)
 		{
 			Node nodeValue = nodes.get(i);
 			
-			if(nodeValue.name == restaurantName)
+			if(nodeValue.name.contentEquals(restaurantName))
 			{
-				System.out.println("I'm alive lol dab dab");
 				index = i;
+				break;
 			}
 		}
 		

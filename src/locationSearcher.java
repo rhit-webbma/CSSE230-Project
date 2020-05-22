@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,22 +13,29 @@ import javax.swing.JTextField;
 
 public class locationSearcher extends JPanel{
 
-	private JLabel distanceOutput;
-	private JLabel timeOutput;
+	private JTextField distanceOutput;
+	private JTextField timeOutput;
 	private JTextField textInput;
 	private JTextField textOutput;
 	private JButton actionButton;
+	private GraphStuff graphStuff;
+	private Graph<Integer> newGraph;
+	
+	
 	
 	public locationSearcher(restaurantInfo info)
 	{
 		setLayout(null);
 		
+		graphStuff = new GraphStuff();
+		
+		newGraph = graphStuff.getSavedGraph();
 		
 		super.setBackground(new Color(216, 222, 240));
 		
-		distanceOutput =  new JLabel("Distance: ");
-		distanceOutput.setSize(new Dimension(100, 100));
-		distanceOutput.setLocation(new Point(50, 60));
+		distanceOutput =  new JTextField("Distance: ");
+		distanceOutput.setSize(new Dimension(200, 20));
+		distanceOutput.setLocation(new Point(23, 120));
 		distanceOutput.setFont(new Font("SansSerif", Font.PLAIN, 18));
 		super.add(distanceOutput);
 		
@@ -39,19 +47,19 @@ public class locationSearcher extends JPanel{
 		textInput = new JTextField(10);
 		textInput.setSize(new Dimension(200, 25));
 		textInput.setLocation(new Point(25, 25));
-		textInput.setUI(new JTextFieldHintUI("Starting City...", Color.black));
+		textInput.setUI(new JTextFieldHintUI("Starting Restaurant...", Color.black));
 		super.add(textInput);
 		
-		timeOutput = new JLabel("Time:  ");
-		timeOutput.setSize(new Dimension(100, 100));
-		timeOutput.setLocation(new Point(50, 100));
+		timeOutput = new JTextField("Time:  ");
+		timeOutput.setSize(new Dimension(200, 20));
+		timeOutput.setLocation(new Point(25, 150));
 		timeOutput.setFont(new Font("SansSerif", Font.PLAIN, 18));
 		super.add(timeOutput);
 		
 		textOutput = new JTextField(10);
 		textOutput.setSize(new Dimension(200, 25));
 		textOutput.setLocation(new Point(25, 60));
-		textOutput.setUI(new JTextFieldHintUI("Ending City...", Color.black));
+		textOutput.setUI(new JTextFieldHintUI("Ending Restaurant...", Color.black));
 		super.add(textOutput);
 		
 		
@@ -63,7 +71,19 @@ public class locationSearcher extends JPanel{
 				// TODO Auto-generated method stub
 				
 				String input = textInput.getText();
-				String output = textInput.getText();
+				String output = textOutput.getText();
+				
+				int inputIndex = newGraph.getIndex(input);
+				int outputIndex = newGraph.getIndex(output);
+				
+				double minimumDist = newGraph.getMinDist(newGraph.nodes.get(inputIndex), newGraph.nodes.get(outputIndex));
+				int minimumTime = newGraph.getMinTime(newGraph.nodes.get(inputIndex), newGraph.nodes.get(outputIndex));
+				
+				System.out.println(minimumDist);
+				System.out.println(minimumTime);
+				
+				distanceOutput.setText("Distance: " + minimumDist + " miles");
+				timeOutput.setText("Time: " + minimumTime + " minutes");
 				
 				
 			}
