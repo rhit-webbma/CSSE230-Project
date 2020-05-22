@@ -122,7 +122,7 @@ public class GraphStuff {
 		savedGraph = g;
 	}
 	
-	public Graph getSavedGraph() {
+	public Graph<Integer> getSavedGraph() {
 		return savedGraph;
 	}
 	
