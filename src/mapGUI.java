@@ -12,10 +12,13 @@ public class mapGUI extends JPanel {
 	
 	private GraphStuff gr = new GraphStuff();
 	private Graph<Integer> graph;
+	public static Graphics g2;
 
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
+		
+		g2 = g;
 		
 		BufferedImage map = null;
 		BufferedImage menu = null;
@@ -38,6 +41,12 @@ public class mapGUI extends JPanel {
 //				g.drawLine(current.getX() + 5, current.getY() + 5, current.getNeighbors().get(j).getOtherNode().getX() + 5, current.getNeighbors().get(j).getOtherNode().getY() + 5);
 //			}
 		}
+		
+//		ArrayList<Graph<Integer>.Edge> short_edge = graph.DistArray(graph.nodes.get(12), graph.nodes.get(14));
+//		for(int k = 0; k < short_edge.size(); k++) {
+//			g.drawLine(short_edge.get(k).getFirstNode().getX() + 5, short_edge.get(k).getFirstNode().getY() + 5, short_edge.get(k).getOtherNode().getX() + 5, short_edge.get(k).getOtherNode().getY() + 5);
+//		}
+
 		
 //		g.setColor(Color.RED);
 //		g.fillOval(330, 200, 10, 10); //Oy Vey
@@ -88,5 +97,14 @@ public class mapGUI extends JPanel {
 	{
 		super.repaint();
 	}
+//	public void drawALine(Graphics g, int inputIndex, int outputIndex) {
+//		super.paint(g);
+//		
+//		ArrayList<Graph<Integer>.Edge> short_edge = graph.DistArray(graph.nodes.get(inputIndex), graph.nodes.get(outputIndex));
+//		for(int k = 0; k < short_edge.size(); k++) {
+//			g.drawLine(short_edge.get(k).getFirstNode().getX() + 5, short_edge.get(k).getFirstNode().getY() + 5, short_edge.get(k).getOtherNode().getX() + 5, short_edge.get(k).getOtherNode().getY() + 5);
+//		}
+//
+//	}
 	
 }

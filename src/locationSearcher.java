@@ -81,11 +81,16 @@ public class locationSearcher extends JPanel{
 				double minimumDist = newGraph.getMinDist(newGraph.nodes.get(inputIndex), newGraph.nodes.get(outputIndex));
 				int minimumTime = newGraph.getMinTime(newGraph.nodes.get(inputIndex), newGraph.nodes.get(outputIndex));
 				
-				ArrayList<Graph<Integer>.Edge> short_edge = newGraph.DistArray(newGraph.nodes.get(inputIndex), newGraph.nodes.get(outputIndex));
-				for(int k = 0; k < short_edge.size(); k++) {
-					g.drawLine(short_edge.get(k).getFirstNode().getX() + 5, short_edge.get(k).getFirstNode().getY() + 5, short_edge.get(k).getOtherNode().getX() + 5, short_edge.get(k).getOtherNode().getY() + 5);
-				}
-
+				Graphics g = mapGUI.g2;
+				
+//				g.drawRect(10, 10, 100, 100);
+//				repaint();
+//				//drawALine(g, inputIndex, outputIndex);
+//
+//				ArrayList<Graph<Integer>.Edge> short_edge = newGraph.DistArray(newGraph.nodes.get(inputIndex), newGraph.nodes.get(outputIndex));
+//				for(int k = 0; k < short_edge.size(); k++) {
+//					g.drawLine(short_edge.get(k).getFirstNode().getX() + 5, short_edge.get(k).getFirstNode().getY() + 5, short_edge.get(k).getOtherNode().getX() + 5, short_edge.get(k).getOtherNode().getY() + 5);
+//				}
 				
 				distanceOutput.setText("Distance: " + minimumDist + " miles");
 				timeOutput.setText("Time: " + minimumTime + " minutes");
