@@ -2,7 +2,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -13,8 +16,9 @@ public class locationSearcher extends JPanel{
 	private JLabel timeOutput;
 	private JTextField textInput;
 	private JTextField textOutput;
+	private JButton actionButton;
 	
-	public locationSearcher()
+	public locationSearcher(restaurantInfo info)
 	{
 		setLayout(null);
 		
@@ -26,6 +30,11 @@ public class locationSearcher extends JPanel{
 		distanceOutput.setLocation(new Point(50, 60));
 		distanceOutput.setFont(new Font("SansSerif", Font.PLAIN, 18));
 		super.add(distanceOutput);
+		
+		actionButton = new JButton("Search");
+		actionButton.setSize(new Dimension(100, 20));
+		actionButton.setLocation(new Point(75, 90));
+		super.add(actionButton);
 		
 		textInput = new JTextField(10);
 		textInput.setSize(new Dimension(200, 25));
@@ -44,6 +53,24 @@ public class locationSearcher extends JPanel{
 		textOutput.setLocation(new Point(25, 60));
 		textOutput.setUI(new JTextFieldHintUI("Ending City...", Color.black));
 		super.add(textOutput);
+		
+		
+		ActionListener buttonListen = new ActionListener()
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				String input = textInput.getText();
+				String output = textInput.getText();
+				
+				
+			}
+			
+		};
+		
+		actionButton.addActionListener(buttonListen);
 	}
 	
 	

@@ -1,8 +1,10 @@
 
 public class GraphStuff {
 	
-	public static void main(String[] args){
-		
+	Graph<Integer> savedGraph;
+	
+	public GraphStuff()
+	{
 		Graph<Integer> g = new Graph<Integer>();
 		g.addNode(1,"Fifi's Lunch Box", 490, 230);
 		g.addNode(2,"Rick's Smokehouse", 500, 300);
@@ -116,8 +118,9 @@ public class GraphStuff {
 		System.out.println(g.getMinTime(g.nodes.get(13), g.nodes.get(32)));
 		System.out.println(g.DistArray(g.nodes.get(13), g.nodes.get(32)));
 		System.out.println(g.TimeArray(g.nodes.get(13), g.nodes.get(32)));
+		
+		savedGraph = g;
 	}
-	
 	
 
 }

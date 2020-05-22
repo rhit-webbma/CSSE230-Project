@@ -1,11 +1,30 @@
 import java.util.ArrayList;
 import java.util.Hashtable;
 
+
 public class Graph<T> {
 	public Hashtable<T, Node> nodes;
 
 	public Graph(){
 		nodes = new Hashtable<T, Node>();
+	}
+	
+	public int getIndex(String restaurantName)
+	{
+		int index = 0;
+		
+		for(int i = 0; i < nodes.size(); i++)
+		{
+			Node nodeValue = nodes.get(i);
+			
+			if(nodeValue.name == restaurantName)
+			{
+				System.out.println("I'm alive lol dab dab");
+				index = i;
+			}
+		}
+		
+		return index;
 	}
 	
 	class Node {

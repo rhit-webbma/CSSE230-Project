@@ -10,17 +10,24 @@ import javax.swing.JTextField;
 
 public class panelGUI extends JPanel{
 
-	private locationSearcher lCS = new locationSearcher();
+	private locationSearcher lCS;
+	private restaurantInfo info;
 	
 	
 	public panelGUI()
 	{
+		info = new restaurantInfo();
+		lCS = new locationSearcher(info);
+		
 		setLayout(null);
 		
 		lCS.setSize(new Dimension(280, 216));
 		lCS.setLocation(new Point(0,0));
 		super.add(lCS);
 		
+		info.setSize(new Dimension(280, 504));
+		info.setLocation(new Point(0, 216));
+		super.add(info);
 		
 
 		
