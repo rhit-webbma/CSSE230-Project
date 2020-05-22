@@ -27,7 +27,7 @@ public class Graph<T> {
 		return index;
 	}
 	
-	class Node {
+	public class Node {
 		private T element;
 		private ArrayList<Edge> neighbors;
 		private String name;
@@ -156,6 +156,14 @@ public class Graph<T> {
 			
 			return current;
 			
+		}
+
+		public int getX() {
+			return x;
+		}
+
+		public int getY() {
+			return y;
 		}
 		
 	}

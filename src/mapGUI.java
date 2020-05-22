@@ -7,6 +7,9 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class mapGUI extends JPanel {
+	
+	private GraphStuff gr = new GraphStuff();
+	private Graph<Integer> graph;
 
 	public void paintComponent(Graphics g)
 	{
@@ -21,8 +24,15 @@ public class mapGUI extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		graph = gr.getSavedGraph();
+		
 		
 		g.drawImage(map, 0, 0, this);
+		for(int i = 1; i < graph.nodes.size(); i++) {
+			g.fillOval(graph.nodes.get(i).getX(), graph.nodes.get(i).getY(), 10, 10);
+		}
+		
+		
 //		g.fillOval(330, 200, 10, 10); //Oy Vey
 //		g.fillOval(380, 180, 10, 10); //Crankys
 //		g.fillOval(440, 50, 10, 10);  //Park Ave
