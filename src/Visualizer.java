@@ -30,12 +30,11 @@ public class Visualizer extends JFrame {
 		map.setSize(new Dimension(1000, 720));
 		
 		panelGUI panel = new panelGUI();
-		panel.setLocation(1000, 0);
-		panel.setSize(new Dimension(280, 720));
+		panel.setLocation(0, 0);
+		panel.setSize(new Dimension(1280, 720));
 		
-		
-		super.add(panel);
 		super.add(map);
+		super.add(panel);
 		
 		super.setVisible(true);
 	}

@@ -16,12 +16,12 @@ public class panelGUI extends JPanel{
 	
 	public panelGUI()
 	{
-		info = new restaurantInfo();
-		lCS = new locationSearcher(info);
-		
 		setLayout(null);
 		
-		lCS.setSize(new Dimension(280, 216));
+		info = new restaurantInfo();
+		lCS = new locationSearcher(info);
+	
+		lCS.setSize(new Dimension(1280, 720));
 		lCS.setLocation(new Point(0,0));
 		super.add(lCS);
 		
