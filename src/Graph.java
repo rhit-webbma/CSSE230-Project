@@ -185,6 +185,10 @@ public class Graph<T> {
 			distance = d;
 		}
 		
+		public Node getFirstNode() {
+			return node1;
+		}
+		
 		public Node getOtherNode() {
 			return node2;
 		}
