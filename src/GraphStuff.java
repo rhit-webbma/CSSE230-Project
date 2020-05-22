@@ -122,5 +122,9 @@ public class GraphStuff {
 		savedGraph = g;
 	}
 	
+	public Graph getSavedGraph() {
+		return savedGraph;
+	}
+	
 
 }
