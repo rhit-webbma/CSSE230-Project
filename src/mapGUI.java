@@ -28,8 +28,13 @@ public class mapGUI extends JPanel {
 		
 		
 		g.drawImage(map, 0, 0, this);
-		for(int i = 1; i < graph.nodes.size(); i++) {
-			g.fillOval(graph.nodes.get(i).getX(), graph.nodes.get(i).getY(), 10, 10);
+		
+		for(int i = 1; i < graph.nodes.size() + 1; i++) {
+			Graph<Integer>.Node current = graph.nodes.get(i);
+			g.fillOval(current.getX(), current.getY(), 10, 10);
+//			for(int j = 0; j < current.getNeighbors().size(); j++) {
+//				g.drawLine(current.getX() + 5, current.getY() + 5, current.getNeighbors().get(j).getOtherNode().getX() + 5, current.getNeighbors().get(j).getOtherNode().getY() + 5);
+//			}
 		}
 		
 		

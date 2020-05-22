@@ -166,9 +166,13 @@ public class Graph<T> {
 			return y;
 		}
 		
+		public ArrayList<Edge> getNeighbors(){
+			return neighbors;
+		}
+		
 	}
 	
-	private class Edge {
+	public class Edge {
 		private Node node1;
 		private Node node2;
 		private int time;
@@ -179,6 +183,10 @@ public class Graph<T> {
 			node2 = n2;
 			time = t;
 			distance = d;
+		}
+		
+		public Node getOtherNode() {
+			return node2;
 		}
 	}
 
