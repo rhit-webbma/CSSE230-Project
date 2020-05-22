@@ -12,11 +12,16 @@ public class Graph<T> {
 		private T element;
 		private ArrayList<Edge> neighbors;
 		private String name;
+		private int x;
+		private int y;
 		
-		public Node(T e, String restaurant){
+		public Node(T e, String restaurant, int x_pos, int y_pos){
 			element = e;
 			neighbors = new ArrayList<Edge>();
 			name = restaurant;
+			x = x_pos;
+			y = y_pos;
+			
 		}
 		
 		public void addEdge(T e, int time, double distance) {
@@ -150,8 +155,8 @@ public class Graph<T> {
 		}
 	}
 
-	public boolean addNode(T e, String rest) {
-		nodes.put(e, new Node(e, rest));
+	public boolean addNode(T e, String rest, int x, int y) {
+		nodes.put(e, new Node(e, rest, x, y));
 		return true;
 	}
 	
