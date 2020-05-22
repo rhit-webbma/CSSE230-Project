@@ -19,17 +19,22 @@ public class locationSearcher extends JPanel{
 	private JTextField textInput;
 	private JTextField textOutput;
 	private JButton actionButton;
-	private GraphStuff graphStuff;
+	private GraphStuff graphStuff = new GraphStuff();
 	private Graph<Integer> newGraph;
 	
+	private String inputNodeText;
+	private String outputNodeText;
+	
+	private boolean paintLines = false;
+	
+	
+
 	
 	
 	public locationSearcher(restaurantInfo info)
 	{
 		//Pull
 		setLayout(null);
-		
-		graphStuff = new GraphStuff();
 		
 		newGraph = graphStuff.getSavedGraph();
 		
@@ -64,6 +69,7 @@ public class locationSearcher extends JPanel{
 		textOutput.setUI(new JTextFieldHintUI("Ending Restaurant...", Color.black));
 		super.add(textOutput);
 		
+		super.repaint();
 		
 		ActionListener buttonListen = new ActionListener()
 		{
@@ -75,27 +81,48 @@ public class locationSearcher extends JPanel{
 				String input = textInput.getText();
 				String output = textOutput.getText();
 				
+				inputNodeText = input;
+				outputNodeText = output;
+				
 				int inputIndex = newGraph.getIndex(input);
 				int outputIndex = newGraph.getIndex(output);
 				
 				double minimumDist = newGraph.getMinDist(newGraph.nodes.get(inputIndex), newGraph.nodes.get(outputIndex));
 				int minimumTime = newGraph.getMinTime(newGraph.nodes.get(inputIndex), newGraph.nodes.get(outputIndex));
-				
-				ArrayList<Graph<Integer>.Edge> short_edge = newGraph.DistArray(newGraph.nodes.get(inputIndex), newGraph.nodes.get(outputIndex));
-				for(int k = 0; k < short_edge.size(); k++) {
-					g.drawLine(short_edge.get(k).getFirstNode().getX() + 5, short_edge.get(k).getFirstNode().getY() + 5, short_edge.get(k).getOtherNode().getX() + 5, short_edge.get(k).getOtherNode().getY() + 5);
-				}
 
+				paintLines = true;
 				
 				distanceOutput.setText("Distance: " + minimumDist + " miles");
 				timeOutput.setText("Time: " + minimumTime + " minutes");
 				
+				//repaint();
 				
 			}
 			
 		};
 		
 		actionButton.addActionListener(buttonListen);
+	}
+	
+	public void paint(Graphics g)
+	{
+		super.paint(g);
+		
+		if(paintLines == true)
+		{
+		newGraph = graphStuff.getSavedGraph();
+		
+		int inputIndex = newGraph.getIndex(inputNodeText);
+		int outputIndex = newGraph.getIndex(outputNodeText);
+		
+		
+		ArrayList<Graph<Integer>.Edge> short_edge = newGraph.DistArray(newGraph.nodes.get(inputIndex), newGraph.nodes.get(outputIndex));
+		for(int k = 0; k < short_edge.size(); k++) {
+			g.fillRect(10, 10, 15, 15);
+			g.drawLine(short_edge.get(k).getFirstNode().getX() + 5, short_edge.get(k).getFirstNode().getY() + 5, short_edge.get(k).getOtherNode().getX() + 5, short_edge.get(k).getOtherNode().getY() + 5);
+		}
+		}
+		else return;
 	}
 	
 	
