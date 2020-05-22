@@ -58,9 +58,11 @@ public class GraphStuff {
 		g.addEdge(3, 5, 2, 0.09);
 		g.addEdge(3, 13, 2, 0.25);
 		g.addEdge(3, 33, 2, 0.34);
+		g.addEdge(3, 6, 2, 0.71);
 		g.addEdge(4, 14, 1, 0.09);
 		g.addEdge(4, 37, 3, 0.29);
 		g.addEdge(4, 28, 5, 0.49);
+		g.addEdge(4, 17, 2, 0.61);
 		g.addEdge(5, 19, 2, 0.25);
 		g.addEdge(5, 7, 2, 0.62);
 		g.addEdge(6, 27, 4, 0.51);
@@ -89,6 +91,7 @@ public class GraphStuff {
 		g.addEdge(12, 15, 4, 0.99);
 		g.addEdge(13, 33, 1, 0.23);
 		g.addEdge(13, 40, 4, 0.75);
+		g.addEdge(13, 38, 1, 0.34);
 		g.addEdge(14, 28, 3, 0.47);
 		g.addEdge(15, 30, 3, 0.91);
 		g.addEdge(16, 23, 8, 3.06);
@@ -106,9 +109,12 @@ public class GraphStuff {
 		g.addEdge(21, 26, 2, 0.62);
 		g.addEdge(22, 26, 1, 0.04);
 		g.addEdge(22, 40, 2, 0.42);
+		g.addEdge(22, 35, 2, 0.45);
 		g.addEdge(24, 32, 7, 2.00);
 		g.addEdge(25, 36, 3, 0.28);
 		g.addEdge(25, 39, 1, 0.19);
+		g.addEdge(25, 29, 1, 0.26);
+		g.addEdge(26, 40, 1, 0.21);
 		g.addEdge(27, 33, 5, 1.45);
 		g.addEdge(28, 29, 1, 0.08);
 		g.addEdge(31, 15, 7, 2.75);

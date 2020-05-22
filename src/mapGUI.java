@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -33,12 +34,12 @@ public class mapGUI extends JPanel {
 		for(int i = 1; i < graph.nodes.size() + 1; i++) {
 			Graph<Integer>.Node current = graph.nodes.get(i);
 			g.fillOval(current.getX(), current.getY(), 10, 10);
-//			for(int j = 0; j < current.getNeighbors().size(); j++) {
-//				g.drawLine(current.getX() + 5, current.getY() + 5, current.getNeighbors().get(j).getOtherNode().getX() + 5, current.getNeighbors().get(j).getOtherNode().getY() + 5);
-//			}
+			for(int j = 0; j < current.getNeighbors().size(); j++) {
+				g.drawLine(current.getX() + 5, current.getY() + 5, current.getNeighbors().get(j).getOtherNode().getX() + 5, current.getNeighbors().get(j).getOtherNode().getY() + 5);
+			}
 		}
 		
-		
+//		g.setColor(Color.RED);
 //		g.fillOval(330, 200, 10, 10); //Oy Vey
 //		g.fillOval(380, 180, 10, 10); //Crankys
 //		g.fillOval(440, 50, 10, 10);  //Park Ave
