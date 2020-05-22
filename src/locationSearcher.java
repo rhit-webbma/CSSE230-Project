@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -80,8 +81,11 @@ public class locationSearcher extends JPanel{
 				double minimumDist = newGraph.getMinDist(newGraph.nodes.get(inputIndex), newGraph.nodes.get(outputIndex));
 				int minimumTime = newGraph.getMinTime(newGraph.nodes.get(inputIndex), newGraph.nodes.get(outputIndex));
 				
-				System.out.println(minimumDist);
-				System.out.println(minimumTime);
+				ArrayList<Graph<Integer>.Edge> short_edge = newGraph.DistArray(newGraph.nodes.get(inputIndex), newGraph.nodes.get(outputIndex));
+				for(int k = 0; k < short_edge.size(); k++) {
+					g.drawLine(short_edge.get(k).getFirstNode().getX() + 5, short_edge.get(k).getFirstNode().getY() + 5, short_edge.get(k).getOtherNode().getX() + 5, short_edge.get(k).getOtherNode().getY() + 5);
+				}
+
 				
 				distanceOutput.setText("Distance: " + minimumDist + " miles");
 				timeOutput.setText("Time: " + minimumTime + " minutes");
