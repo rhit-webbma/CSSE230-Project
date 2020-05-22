@@ -105,6 +105,7 @@ public class GraphStuff {
 		g.addEdge(21, 35, 3, 0.17);
 		g.addEdge(21, 26, 2, 0.62);
 		g.addEdge(22, 26, 1, 0.04);
+		g.addEdge(22, 40, 2, 0.42);
 		g.addEdge(24, 32, 7, 2.00);
 		g.addEdge(25, 36, 3, 0.28);
 		g.addEdge(25, 39, 1, 0.19);
@@ -113,11 +114,6 @@ public class GraphStuff {
 		g.addEdge(31, 15, 7, 2.75);
 		g.addEdge(32, 34, 3, 0.45);
 		g.addEdge(38, 5, 2, 0.09);
-		
-		System.out.println(g.getMinDist(g.nodes.get(13), g.nodes.get(32)));
-		System.out.println(g.getMinTime(g.nodes.get(13), g.nodes.get(32)));
-		System.out.println(g.DistArray(g.nodes.get(13), g.nodes.get(32)));
-		System.out.println(g.TimeArray(g.nodes.get(13), g.nodes.get(32)));
 		
 		savedGraph = g;
 	}

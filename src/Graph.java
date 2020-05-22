@@ -27,7 +27,7 @@ public class Graph<T> {
 		return index;
 	}
 	
-	class Node {
+	public class Node {
 		private T element;
 		private ArrayList<Edge> neighbors;
 		private String name;
@@ -157,10 +157,22 @@ public class Graph<T> {
 			return current;
 			
 		}
+
+		public int getX() {
+			return x;
+		}
+
+		public int getY() {
+			return y;
+		}
+		
+		public ArrayList<Edge> getNeighbors(){
+			return neighbors;
+		}
 		
 	}
 	
-	private class Edge {
+	public class Edge {
 		private Node node1;
 		private Node node2;
 		private int time;
@@ -171,6 +183,14 @@ public class Graph<T> {
 			node2 = n2;
 			time = t;
 			distance = d;
+		}
+		
+		public Node getFirstNode() {
+			return node1;
+		}
+		
+		public Node getOtherNode() {
+			return node2;
 		}
 	}
 

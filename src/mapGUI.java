@@ -2,11 +2,15 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class mapGUI extends JPanel {
+	
+	private GraphStuff gr = new GraphStuff();
+	private Graph<Integer> graph;
 
 	public void paintComponent(Graphics g)
 	{
@@ -21,8 +25,20 @@ public class mapGUI extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		graph = gr.getSavedGraph();
+		
 		
 		g.drawImage(map, 0, 0, this);
+		
+		for(int i = 1; i < graph.nodes.size() + 1; i++) {
+			Graph<Integer>.Node current = graph.nodes.get(i);
+			g.fillOval(current.getX(), current.getY(), 10, 10);
+//			for(int j = 0; j < current.getNeighbors().size(); j++) {
+//				g.drawLine(current.getX() + 5, current.getY() + 5, current.getNeighbors().get(j).getOtherNode().getX() + 5, current.getNeighbors().get(j).getOtherNode().getY() + 5);
+//			}
+		}
+		
+		
 //		g.fillOval(330, 200, 10, 10); //Oy Vey
 //		g.fillOval(380, 180, 10, 10); //Crankys
 //		g.fillOval(440, 50, 10, 10);  //Park Ave
