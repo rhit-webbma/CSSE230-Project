@@ -21,6 +21,10 @@ public class locationSearcher extends JPanel{
 	private JButton actionButton;
 	private GraphStuff graphStuff;
 	private Graph<Integer> newGraph;
+	private int input_Index;
+	private int output_Index;
+	
+	private boolean paintlines = false;
 	
 	
 	
@@ -78,15 +82,17 @@ public class locationSearcher extends JPanel{
 				int inputIndex = newGraph.getIndex(input);
 				int outputIndex = newGraph.getIndex(output);
 				
+				input_Index = inputIndex;
+				output_Index = outputIndex;
+				
+				paintlines = true;
+				
+				
 				double minimumDist = newGraph.getMinDist(newGraph.nodes.get(inputIndex), newGraph.nodes.get(outputIndex));
 				int minimumTime = newGraph.getMinTime(newGraph.nodes.get(inputIndex), newGraph.nodes.get(outputIndex));
 				
-				Graphics g = mapGUI.g2;
-				
-//				g.drawRect(10, 10, 100, 100);
-//				repaint();
-//				//drawALine(g, inputIndex, outputIndex);
-//
+				repaint();
+
 //				ArrayList<Graph<Integer>.Edge> short_edge = newGraph.DistArray(newGraph.nodes.get(inputIndex), newGraph.nodes.get(outputIndex));
 //				for(int k = 0; k < short_edge.size(); k++) {
 //					g.drawLine(short_edge.get(k).getFirstNode().getX() + 5, short_edge.get(k).getFirstNode().getY() + 5, short_edge.get(k).getOtherNode().getX() + 5, short_edge.get(k).getOtherNode().getY() + 5);
@@ -103,5 +109,21 @@ public class locationSearcher extends JPanel{
 		actionButton.addActionListener(buttonListen);
 	}
 	
+	public void paint(Graphics g) {
+		
+		super.paint(g);
+		
+		
+		
+		
 	
+		if(paintlines == true) {
+			ArrayList<Graph<Integer>.Edge> short_edge = newGraph.DistArray(newGraph.nodes.get(input_Index), newGraph.nodes.get(output_Index));
+			for(int k = 0; k < short_edge.size(); k++) {
+				g.drawLine(short_edge.get(k).getFirstNode().getX() + 5, short_edge.get(k).getFirstNode().getY() + 5, short_edge.get(k).getOtherNode().getX() + 5, short_edge.get(k).getOtherNode().getY() + 5);
+			}
+			repaint();
+		}
+
+	}
 }

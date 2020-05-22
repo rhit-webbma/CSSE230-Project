@@ -97,14 +97,5 @@ public class mapGUI extends JPanel {
 	{
 		super.repaint();
 	}
-//	public void drawALine(Graphics g, int inputIndex, int outputIndex) {
-//		super.paint(g);
-//		
-//		ArrayList<Graph<Integer>.Edge> short_edge = graph.DistArray(graph.nodes.get(inputIndex), graph.nodes.get(outputIndex));
-//		for(int k = 0; k < short_edge.size(); k++) {
-//			g.drawLine(short_edge.get(k).getFirstNode().getX() + 5, short_edge.get(k).getFirstNode().getY() + 5, short_edge.get(k).getOtherNode().getX() + 5, short_edge.get(k).getOtherNode().getY() + 5);
-//		}
-//
-//	}
 	
 }
