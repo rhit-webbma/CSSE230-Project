@@ -18,7 +18,7 @@ public class mapGUI extends JPanel implements MouseListener{
 	private GraphStuff gr = new GraphStuff();
 	private Graph<Integer> graph;
 	private ArrayList<Circle> circleList = new ArrayList<>();
-	private int circleIndex = 0;
+	private int circleIndex = 99;
 	private boolean inputTownSelected = false;
 	public static Graphics g2;
 
