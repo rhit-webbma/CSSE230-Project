@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.font.TextAttribute;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -160,8 +161,10 @@ public class locationSearcher extends mapGUI {
 				outputRestaurantTitleText = newGraph.nodes.get(outputIndex).getName();
 				outputDescriptionText = newList.getDescription(outputRestaurantTitleText);
 				
-				distanceOutput.setText("Distance: " + minimumDist + " miles");
-				timeOutput.setText("Time: " + minimumTime + " minutes");
+				DecimalFormat df = new DecimalFormat("##.##");
+				
+				distanceOutput.setText("Distance: " + df.format(minimumDist) + " miles");
+				timeOutput.setText("Time: " + df.format(minimumTime) + " minutes");
 				
 				changeDescription();
 				

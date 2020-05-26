@@ -56,11 +56,6 @@ public class mapGUI extends JPanel implements MouseListener{
 //			}
 		}
 		
-//		ArrayList<Graph<Integer>.Edge> short_edge = graph.DistArray(graph.nodes.get(12), graph.nodes.get(14));
-//		for(int k = 0; k < short_edge.size(); k++) {
-//			g.drawLine(short_edge.get(k).getFirstNode().getX() + 5, short_edge.get(k).getFirstNode().getY() + 5, short_edge.get(k).getOtherNode().getX() + 5, short_edge.get(k).getOtherNode().getY() + 5);
-//		}
-
 		
 //		g.setColor(Color.RED);
 //		g.fillOval(330, 200, 10, 10); //Oy Vey

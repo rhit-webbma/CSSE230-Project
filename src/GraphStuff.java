@@ -54,6 +54,7 @@ public class GraphStuff {
 		g.addEdge(1, 6, 1, 0.28);
 		g.addEdge(2, 27, 4, 0.59);
 		g.addEdge(2, 24, 2, 0.66);
+		g.addEdge(2, 6, 1, 0.11);
 		g.addEdge(3, 38, 2, 0.14);
 		g.addEdge(3, 5, 2, 0.09);
 		g.addEdge(3, 13, 2, 0.25);
