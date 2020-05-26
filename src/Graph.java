@@ -51,7 +51,7 @@ public class Graph<T> {
 		}
 		
 		public double shortestDist(Node o, int edges, double total) {
-			if(edges > 12) {
+			if(edges > 10) {
 				return 10000000;
 			}
 			double current = 100000;
@@ -72,7 +72,7 @@ public class Graph<T> {
 		}
 		
 		public double shortestDistArray(Node o, int edges, double total, ArrayList<Edge> dist_edges) {
-			if(edges > 12) {
+			if(edges > 10) {
 				return 10000000;
 			}
 			double current = 100000;
@@ -105,7 +105,7 @@ public class Graph<T> {
 		}
 		
 		public int shortestTime(Node o, int edges, int total) {
-			if(edges > 12) {
+			if(edges > 10) {
 				return 10000000;
 			}
 			int current = 100000;
@@ -127,7 +127,7 @@ public class Graph<T> {
 		}
 
 		public int shortestTimeArray(Node o, int edges, int total, ArrayList<Edge> time_edges) {
-			if(edges > 12) {
+			if(edges > 10) {
 				return 10000000;
 			}
 			int current = 100000;
