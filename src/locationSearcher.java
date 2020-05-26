@@ -2,7 +2,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.MouseInfo;
 import java.awt.Point;
+import java.awt.PointerInfo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -27,6 +29,7 @@ public class locationSearcher extends mapGUI {
 	private JTextField textOutput;
 	private JButton actionButton;
 	private JLabel inputRestaurantTitle;
+	private JLabel restaurantName = new JLabel();
 	private JLabel outputRestaurantTitle;
 	private JTextArea inputDescription;
 	private JTextArea outputDescription;
@@ -47,6 +50,7 @@ public class locationSearcher extends mapGUI {
 	private String outputNodeText;
 	
 	private boolean paintLines = false;
+	private boolean restaurantNamesDrawn = false;
 	
 	
 
@@ -94,7 +98,7 @@ public class locationSearcher extends mapGUI {
 		
 		super.repaint();
 		
-		ActionListener inputRestarauntName = new ActionListener()
+		ActionListener mouseEvents = new ActionListener()
 			{
 			
 				@Override
@@ -104,6 +108,10 @@ public class locationSearcher extends mapGUI {
 					
 					int circleIndex = referenceMap.getCircleIndex();
 					boolean inputTownSelected = referenceMap.getInputTownSelected();
+					int circleHoverIndex = referenceMap.getCircleHoverIndex();
+					
+					listResturantName(circleHoverIndex);
+
 					
 					if(circleIndex != 99)
 					{
@@ -129,7 +137,7 @@ public class locationSearcher extends mapGUI {
 			
 			};
 			
-		Timer clickInput = new Timer(32, inputRestarauntName);
+		Timer clickInput = new Timer(32, mouseEvents);
 		
 		clickInput.start();
 		
@@ -139,6 +147,7 @@ public class locationSearcher extends mapGUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+			
 				
 				String input = textInput.getText();
 				String output = textOutput.getText();
@@ -254,14 +263,50 @@ public class locationSearcher extends mapGUI {
 		}
 	}
 	
-	public void updateCircleIndex()
-	{
-		circleIndex = super.getCircleIndex();
-	}
+//	public void updateCircleIndex()
+//	{
+//		circleIndex = super.getCircleIndex();
+//	}
+//	
+//	public void updateTownSelected()
+//	{
+//		inputTownSelected = super.getInputTownSelected();
+//	}
 	
-	public void updateTownSelected()
+	public void listResturantName(int circleHoverIndex)
 	{
-		inputTownSelected = super.getInputTownSelected();
+		PointerInfo a = MouseInfo.getPointerInfo();
+		Point b = a.getLocation();
+		int mouseX = (int) b.getX();
+		int mouseY = (int) b.getY();
+		
+		if(circleHoverIndex != 99)
+		
+		{
+		
+		String name = newGraph.nodes.get(circleHoverIndex +1).getName();
+		restaurantName.setText(name);
+		restaurantName.setSize(new Dimension(100, 100));
+		restaurantName.setLocation(new Point(mouseX - 100, mouseY - 100));
+		
+		
+		if(restaurantNamesDrawn == false)
+		{
+			super.add(restaurantName);
+			restaurantNamesDrawn = true;
+		}
+		else
+		{
+			restaurantName.setText(name);
+		}
+		}
+		else
+		{
+			restaurantName.setText("");
+			restaurantName.setSize(new Dimension(100, 100));
+			restaurantName.setLocation(new Point(mouseX - 100, mouseY - 100));
+		}
+		
 	}
 	
 	

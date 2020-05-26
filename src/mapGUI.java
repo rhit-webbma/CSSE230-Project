@@ -1,8 +1,11 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Polygon;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -10,15 +13,17 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 import javafx.scene.shape.Circle;
 
-public class mapGUI extends JPanel implements MouseListener{
+public class mapGUI extends JPanel implements MouseListener, MouseMotionListener{
 	
 	private GraphStuff gr = new GraphStuff();
 	private Graph<Integer> graph;
 	private ArrayList<Circle> circleList = new ArrayList<>();
 	private int circleIndex = 99;
+	private int circleHoverIndex = 99;
 	private boolean inputTownSelected = false;
 	public static Graphics g2;
 
@@ -107,6 +112,11 @@ public class mapGUI extends JPanel implements MouseListener{
 		return this.circleIndex;
 	}
 	
+	public int getCircleHoverIndex()
+	{
+		return this.circleHoverIndex;
+	}
+	
 	public boolean getInputTownSelected()
 	{
 		return this.inputTownSelected;
@@ -116,6 +126,7 @@ public class mapGUI extends JPanel implements MouseListener{
 	{
 		super.repaint();
 		super.addMouseListener(this);
+		super.addMouseMotionListener(this);
 	}
 
 	@Override
@@ -176,6 +187,35 @@ public class mapGUI extends JPanel implements MouseListener{
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+		int xPos = e.getX();
+		int yPos = e.getY();
+		
+		for(int i = 0; i < circleList.size(); i++)
+		{
+			double circleX = circleList.get(i).getCenterX();
+			double circleY = circleList.get(i).getCenterY();
+			
+			if((xPos <= circleX + 7 && xPos >= circleX - 7) && (yPos <= circleY + 7 && yPos >= circleY - 7))
+			{
+				circleHoverIndex = i;
+				break;
+			}
+			else
+			{
+				circleHoverIndex = 99;
+			}
+		}
 	}
 	
 }
