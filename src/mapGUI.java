@@ -1,5 +1,8 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Polygon;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -8,10 +11,15 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-public class mapGUI extends JPanel {
+import javafx.scene.shape.Circle;
+
+public class mapGUI extends JPanel implements MouseListener{
 	
 	private GraphStuff gr = new GraphStuff();
 	private Graph<Integer> graph;
+	private ArrayList<Circle> circleList = new ArrayList<>();
+	private int circleIndex = 0;
+	private boolean inputTownSelected = false;
 	public static Graphics g2;
 
 	public void paintComponent(Graphics g)
@@ -37,6 +45,12 @@ public class mapGUI extends JPanel {
 		for(int i = 1; i < graph.nodes.size() + 1; i++) {
 			Graph<Integer>.Node current = graph.nodes.get(i);
 			g.fillOval(current.getX(), current.getY(), 10, 10);
+			
+			Circle locationCirlce = new Circle(current.getX(), current.getY(), 10);
+			
+			circleList.add(locationCirlce);
+			
+			
 //			for(int j = 0; j < current.getNeighbors().size(); j++) {
 //				g.drawLine(current.getX() + 5, current.getY() + 5, current.getNeighbors().get(j).getOtherNode().getX() + 5, current.getNeighbors().get(j).getOtherNode().getY() + 5);
 //			}
@@ -88,9 +102,80 @@ public class mapGUI extends JPanel {
 		
 	}
 	
+	public int getCircleIndex()
+	{
+		return this.circleIndex;
+	}
+	
+	public boolean getInputTownSelected()
+	{
+		return this.inputTownSelected;
+	}
+	
 	public mapGUI()
 	{
 		super.repaint();
+		super.addMouseListener(this);
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		int xPos = e.getX();
+		int yPos = e.getY();
+		
+		for(int i = 0; i < circleList.size(); i++)
+		{
+			double circleX = circleList.get(i).getCenterX();
+			double circleY = circleList.get(i).getCenterY();
+			
+			if((xPos <= circleX + 7 && xPos >= circleX - 7) && (yPos <= circleY + 7 && yPos >= circleY - 7))
+			{
+				if(inputTownSelected == true)
+				{
+					
+					circleIndex = i;
+					
+					System.out.println(circleIndex);
+					
+					inputTownSelected = false;
+				}
+				else
+				{
+				circleIndex = i;
+				inputTownSelected = true;
+				}
+				
+				break;
+			}
+		}
+		
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

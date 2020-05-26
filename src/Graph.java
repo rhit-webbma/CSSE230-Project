@@ -45,6 +45,11 @@ public class Graph<T> {
 			
 		}
 		
+		public String getName()
+		{
+			return this.name;
+		}
+		
 		public void addEdge(T e, int time, double distance) {
 			Node otherNode = nodes.get(e);
 			neighbors.add(new Edge(this, otherNode, time, distance));

@@ -5,22 +5,42 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.font.TextAttribute;
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 
-public class locationSearcher extends mapGUI{
+public class locationSearcher extends mapGUI {
 
 	private JTextField distanceOutput;
 	private JTextField timeOutput;
 	private JTextField textInput;
 	private JTextField textOutput;
 	private JButton actionButton;
+	private JLabel inputRestaurantTitle;
+	private JLabel outputRestaurantTitle;
+	private JTextArea inputDescription;
+	private JTextArea outputDescription;
+	private String inputDescriptionText;
+	private String inputRestaurantTitleText;
+	private String outputDescriptionText;
+	private String outputRestaurantTitleText;
+	private int circleIndex;
+	private boolean inputTownSelected;
+	private mapGUI referenceMap;
+	
+	private RestaurantList newList = new RestaurantList();
 	private GraphStuff graphStuff = new GraphStuff();
 	private Graph<Integer> newGraph;
+	private boolean descriptionAdded = false;
 	
 	private String inputNodeText;
 	private String outputNodeText;
@@ -31,10 +51,12 @@ public class locationSearcher extends mapGUI{
 
 	
 	
-	public locationSearcher(restaurantInfo info)
+	public locationSearcher(restaurantInfo info, mapGUI refMap)
 	{
 		//Pull
 		setLayout(null);
+		
+		referenceMap = refMap;
 		
 		newGraph = graphStuff.getSavedGraph();
 		
@@ -71,6 +93,45 @@ public class locationSearcher extends mapGUI{
 		
 		super.repaint();
 		
+		ActionListener inputRestarauntName = new ActionListener()
+			{
+			
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+				
+					
+					int circleIndex = referenceMap.getCircleIndex();
+					boolean inputTownSelected = referenceMap.getInputTownSelected();
+					
+					if(circleIndex != 0)
+					{
+						if(inputTownSelected == true)
+						{
+							String inputTownName = newGraph.nodes.get(circleIndex + 1).getName();
+							
+							textInput.setText(inputTownName);
+							inputNodeText = inputTownName;
+							
+						}
+						else
+						{
+							String outputTownName = newGraph.nodes.get(circleIndex + 1).getName();
+							
+							textOutput.setText(outputTownName);
+							outputNodeText = outputTownName;
+						}
+					}
+					
+					repaint();
+				}
+			
+			};
+			
+		Timer clickInput = new Timer(32, inputRestarauntName);
+		
+		clickInput.start();
+		
 		ActionListener buttonListen = new ActionListener()
 		{
 
@@ -93,9 +154,16 @@ public class locationSearcher extends mapGUI{
 
 				paintLines = true;
 			
+				inputRestaurantTitleText = newGraph.nodes.get(inputIndex).getName();
+				inputDescriptionText = newList.getDescription(inputRestaurantTitleText);
+				
+				outputRestaurantTitleText = newGraph.nodes.get(outputIndex).getName();
+				outputDescriptionText = newList.getDescription(outputRestaurantTitleText);
 				
 				distanceOutput.setText("Distance: " + minimumDist + " miles");
 				timeOutput.setText("Time: " + minimumTime + " minutes");
+				
+				changeDescription();
 				
 				repaint();
 				
@@ -124,6 +192,73 @@ public class locationSearcher extends mapGUI{
 		}
 		}
 		else return;
+	}
+	
+	public void changeDescription()
+	{
+		
+		if(this.descriptionAdded == false)
+		{
+		
+		inputRestaurantTitle =  new JLabel(inputRestaurantTitleText);
+		inputRestaurantTitle.setSize(new Dimension(100, 175));
+		inputRestaurantTitle.setLocation(new Point(1090, 100));
+		inputRestaurantTitle.setFont(new Font("SansSerif", Font.PLAIN, 18));
+		
+		Font titleFont = inputRestaurantTitle.getFont();
+		Map attributes = titleFont.getAttributes();
+		attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+		inputRestaurantTitle.setFont(titleFont.deriveFont(attributes));
+		
+		super.add(inputRestaurantTitle);
+		
+		inputDescription =  new JTextArea(inputDescriptionText);
+		
+		inputDescription.setLineWrap(true);
+		inputDescription.setWrapStyleWord(true);
+		inputDescription.setSize(new Dimension(255, 200));
+		inputDescription.setLocation(new Point(1005, 200));
+		inputDescription.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		super.add(inputDescription);
+		
+		outputRestaurantTitle =  new JLabel(outputRestaurantTitleText);
+		outputRestaurantTitle.setSize(new Dimension(100, 100));
+		outputRestaurantTitle.setLocation(new Point(1090, 360));
+		outputRestaurantTitle.setFont(new Font("SansSerif", Font.PLAIN, 18));
+		
+		outputRestaurantTitle.setFont(titleFont.deriveFont(attributes));
+		
+		super.add(outputRestaurantTitle);
+		
+		outputDescription =  new JTextArea(outputDescriptionText);
+		
+		outputDescription.setLineWrap(true);
+		outputDescription.setWrapStyleWord(true);
+		outputDescription.setSize(new Dimension(255, 200));
+		outputDescription.setLocation(new Point(1005, 430));
+		outputDescription.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		super.add(outputDescription);
+		
+		this.descriptionAdded = true;
+		
+		}
+		else
+		{
+			inputRestaurantTitle.setText(inputRestaurantTitleText);
+			inputDescription.setText(inputDescriptionText);
+			outputRestaurantTitle.setText(outputRestaurantTitleText);
+			outputDescription.setText(outputDescriptionText);
+		}
+	}
+	
+	public void updateCircleIndex()
+	{
+		circleIndex = super.getCircleIndex();
+	}
+	
+	public void updateTownSelected()
+	{
+		inputTownSelected = super.getInputTownSelected();
 	}
 	
 	

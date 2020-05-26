@@ -64,7 +64,7 @@ public class RestaurantList {
 		descriptions.add("Cheddar's Scratch Kitchen, formerly known as Cheddar's Casual Cafe, is an American restaurant brand based in Irving, Texas. Founded in 1979, the company has more than 170 locations in 28 states as of 2018");
 		descriptions.add("Placeholder");
 		descriptions.add("Placeholder");
-		descriptions.add("Placerholder");
+		descriptions.add("Placeholder");
 		descriptions.add("Golden Corral is an American restaurant chain serving breakfast, lunch and dinner, featuring a large all-you-can-eat buffet and grill offering numerous hot and cold dishes, a carving station, and their Brass Bell Bakery.");
 		descriptions.add("Grand Traverse Pie Company - Traverse City. Our first Pie Shop opened in July of 1996 by company founders Mike and Denise Busley. ... We also have great lunch selections, with quiches, soups, pot pie by the slice, salads, sandwiches, and raps. We serve espresso, smoothies, and a variety of home made baked goods.");
 		descriptions.add("No-nonsense hub supplying wood-smoked meat & Southern-style comfort sides in snug, rustic digs.");
