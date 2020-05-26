@@ -29,7 +29,7 @@ public class Visualizer extends JFrame {
 		map.setLocation(0, 0);
 		map.setSize(new Dimension(1000, 720));
 		
-		panelGUI panel = new panelGUI();
+		panelGUI panel = new panelGUI(map);
 		panel.setLocation(0, 0);
 		panel.setSize(new Dimension(1280, 720));
 		
