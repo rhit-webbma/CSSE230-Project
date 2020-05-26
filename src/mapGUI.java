@@ -147,7 +147,7 @@ public class mapGUI extends JPanel implements MouseListener, MouseMotionListener
 			double circleX = circleList.get(i).getCenterX();
 			double circleY = circleList.get(i).getCenterY();
 			
-			if((xPos <= circleX + 7 && xPos >= circleX - 7) && (yPos <= circleY + 7 && yPos >= circleY - 7))
+			if((xPos <= circleX + 12 && xPos >= circleX - 12) && (yPos <= circleY + 12 && yPos >= circleY - 12))
 			{
 				if(inputTownSelected == true)
 				{
@@ -203,10 +203,10 @@ public class mapGUI extends JPanel implements MouseListener, MouseMotionListener
 		
 		for(int i = 0; i < circleList.size(); i++)
 		{
-			double circleX = circleList.get(i).getCenterX();
-			double circleY = circleList.get(i).getCenterY();
+			double circleX = circleList.get(i).getCenterX() + 5;
+			double circleY = circleList.get(i).getCenterY() + 5;
 			
-			if((xPos <= circleX + 7 && xPos >= circleX - 7) && (yPos <= circleY + 7 && yPos >= circleY - 7))
+			if((xPos <= circleX + 5 && xPos >= circleX - 5) && (yPos <= circleY + 5 && yPos >= circleY - 5))
 			{
 				circleHoverIndex = i;
 				break;
