@@ -104,7 +104,7 @@ public class locationSearcher extends mapGUI {
 					int circleIndex = referenceMap.getCircleIndex();
 					boolean inputTownSelected = referenceMap.getInputTownSelected();
 					
-					if(circleIndex != 0)
+					if(circleIndex != 99)
 					{
 						if(inputTownSelected == true)
 						{
