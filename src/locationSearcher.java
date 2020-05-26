@@ -52,7 +52,6 @@ public class locationSearcher extends mapGUI {
 	private boolean paintLines = false;
 	private boolean restaurantNamesDrawn = false;
 	
-	
 
 	
 	
@@ -95,8 +94,7 @@ public class locationSearcher extends mapGUI {
 		textOutput.setLocation(new Point(1025, 60));
 		textOutput.setUI(new JTextFieldHintUI("Ending Restaurant...", Color.black));
 		super.add(textOutput);
-		
-		super.repaint();
+
 		
 		ActionListener mouseEvents = new ActionListener()
 			{
@@ -120,7 +118,6 @@ public class locationSearcher extends mapGUI {
 							String inputTownName = newGraph.nodes.get(circleIndex + 1).getName();
 							
 							textInput.setText(inputTownName);
-							inputNodeText = inputTownName;
 							
 						}
 						else
@@ -128,11 +125,9 @@ public class locationSearcher extends mapGUI {
 							String outputTownName = newGraph.nodes.get(circleIndex + 1).getName();
 							
 							textOutput.setText(outputTownName);
-							outputNodeText = outputTownName;
 						}
 					}
 					
-					repaint();
 				}
 			
 			};
@@ -196,12 +191,12 @@ public class locationSearcher extends mapGUI {
 		
 		int inputIndex = newGraph.getIndex(inputNodeText);
 		int outputIndex = newGraph.getIndex(outputNodeText);
-		
-		
+
 		ArrayList<Graph<Integer>.Edge> short_edge = newGraph.DistArray(newGraph.nodes.get(inputIndex), newGraph.nodes.get(outputIndex));
 		for(int k = 0; k < short_edge.size(); k++) {
 			g.drawLine((short_edge.get(k).getFirstNode().getX() + 5), short_edge.get(k).getFirstNode().getY() + 5, (short_edge.get(k).getOtherNode().getX() + 5), short_edge.get(k).getOtherNode().getY() + 5);
 		}
+
 		}
 		else return;
 	}
@@ -262,16 +257,6 @@ public class locationSearcher extends mapGUI {
 			outputDescription.setText(outputDescriptionText);
 		}
 	}
-	
-//	public void updateCircleIndex()
-//	{
-//		circleIndex = super.getCircleIndex();
-//	}
-//	
-//	public void updateTownSelected()
-//	{
-//		inputTownSelected = super.getInputTownSelected();
-//	}
 	
 	public void listResturantName(int circleHoverIndex)
 	{
